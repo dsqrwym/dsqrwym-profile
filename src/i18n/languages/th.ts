@@ -6,6 +6,8 @@ export const th: Translation = {
 	[Key.about]: "เกี่ยวกับ",
 	[Key.archive]: "คลัง",
 	[Key.search]: "ค้นหา",
+	[Key.projects]: "โปรเจกต์",
+	[Key.projectsDescription]: "โอเพนซอร์สและโปรเจกต์ส่วนตัว",
 
 	[Key.tags]: "ป้ายกำกับ",
 	[Key.categories]: "หมวดหมู่",
