@@ -5,63 +5,63 @@ import { url } from "@/utils/url-utils";
 ---
 
 <Layout title="404 - Page Not Found">
-    <main class="nf-scene relative isolate flex min-h-screen flex-col overflow-hidden bg-[var(--page-bg)] text-neutral-900 dark:text-neutral-100 select-none">
+    <main class="nf-scene relative isolate flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[var(--nf-bg)] text-[var(--nf-fg)] select-none">
         <!-- Full-screen Node Field Canvas -->
-        <canvas id="nf-canvas" aria-hidden="true" class="pointer-events-none absolute inset-0 z-0 size-full"></canvas>
+        <canvas id="nf-canvas" aria-hidden="true"></canvas>
 
         <!-- Vignette gradient overlay -->
-        <div aria-hidden="true" class="nf-vignette pointer-events-none absolute inset-0 z-[1]"></div>
+        <div aria-hidden="true" class="nf-vignette"></div>
 
-        <div class="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-8 text-center sm:py-10">
+        <div class="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-12 text-center w-full max-w-2xl">
             <!-- Badge -->
-            <div class="nf-rise inline-flex items-center gap-2.5 rounded-full border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/50 backdrop-blur-md px-3.5 py-1.5 font-mono text-[10px] tracking-[0.3em] text-neutral-600 dark:text-neutral-400 uppercase">
-                <span class="relative flex size-1.5">
-                    <span class="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-75"></span>
-                    <span class="relative inline-flex size-1.5 rounded-full bg-current"></span>
+            <div class="nf-rise inline-flex items-center gap-2.5 rounded-full border border-[var(--nf-border)] bg-[var(--nf-card)] backdrop-blur-md px-4 py-1.5 font-mono text-[11px] tracking-[0.25em] text-[var(--nf-muted)] uppercase shadow-sm">
+                <span class="relative flex size-2">
+                    <span class="absolute inline-flex size-full animate-ping rounded-full bg-[var(--primary)] opacity-75"></span>
+                    <span class="relative inline-flex size-2 rounded-full bg-[var(--primary)]"></span>
                 </span>
                 404 · lost in the grid
             </div>
 
             <!-- Apple-style Glass 404 block -->
-            <div class="relative mt-4 flex items-center justify-center">
-                <div aria-hidden="true" class="nf-glass pointer-events-none absolute inset-0 z-0 rounded-[2.25rem] sm:rounded-[2.75rem]">
+            <div class="relative mt-6 flex items-center justify-center">
+                <div aria-hidden="true" class="nf-glass pointer-events-none absolute inset-0 z-0">
                     <span class="nf-glass-blur nf-glass-blur-1"></span>
                     <span class="nf-glass-blur nf-glass-blur-2"></span>
                     <span class="nf-glass-blur nf-glass-blur-3"></span>
                     <span class="nf-glass-tint"></span>
                 </div>
-                <h1 class="nf-404 relative z-10 px-[0.22em] py-[0.26em] text-[clamp(5.5rem,18vw,15rem)] leading-[0.82] font-black tracking-[0.01em]">
+                <h1 class="nf-404 relative z-10 px-8 py-3 text-[clamp(6rem,20vw,14rem)] leading-[0.82] font-black tracking-tight select-none">
                     404
                 </h1>
             </div>
 
-            <h2 class="nf-rise mt-4 text-2xl font-semibold tracking-tight sm:text-3xl [animation-delay:100ms] text-neutral-900 dark:text-neutral-100">
+            <h2 class="nf-rise mt-6 text-2xl font-bold tracking-tight sm:text-3xl text-[var(--nf-fg)] [animation-delay:100ms]">
                 This page isn't here
             </h2>
-            <p class="nf-rise mt-2 max-w-md text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 [animation-delay:160ms]">
+            <p class="nf-rise mt-2.5 max-w-md text-sm leading-relaxed text-[var(--nf-muted)] [animation-delay:160ms]">
                 The address doesn't exist, has been moved, or never existed.
                 <br class="hidden sm:block" />
-                <span class="opacity-75">Don't worry — follow the light back.</span>
+                <span class="opacity-80">Don't worry — follow the light back.</span>
             </p>
 
             <!-- Terminal-style GET box -->
-            <div class="nf-rise mt-4 w-full max-w-md [animation-delay:220ms]">
-                <div class="flex items-center gap-2 rounded-xl border border-black/10 dark:border-white/15 bg-white/60 dark:bg-black/40 backdrop-blur-md px-3.5 py-2.5 font-mono text-[11px] shadow-sm sm:text-xs">
-                    <span class="shrink-0 text-neutral-400 dark:text-neutral-500">GET</span>
-                    <span id="nf-display-path" class="min-w-0 flex-1 truncate text-left text-neutral-700 dark:text-neutral-300">
+            <div class="nf-rise mt-5 w-full max-w-md [animation-delay:220ms]">
+                <div class="flex items-center gap-3 rounded-xl border border-[var(--nf-border)] bg-[var(--nf-card)] backdrop-blur-md px-4 py-2.5 font-mono text-xs shadow-sm">
+                    <span class="shrink-0 font-bold text-[var(--primary)]">GET</span>
+                    <span id="nf-display-path" class="min-w-0 flex-1 truncate text-left text-[var(--nf-fg)]">
                         /404
                     </span>
-                    <span class="shrink-0 rounded-md border border-black/10 dark:border-white/15 bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 font-semibold text-neutral-900 dark:text-neutral-100">
+                    <span class="shrink-0 rounded-md border border-[var(--nf-border)] bg-[var(--nf-badge-bg)] px-2 py-0.5 font-semibold text-[var(--nf-fg)]">
                         404
                     </span>
                 </div>
             </div>
 
             <!-- Action buttons -->
-            <div class="nf-rise mt-6 flex flex-wrap items-center justify-center gap-3 [animation-delay:300ms]">
+            <div class="nf-rise mt-7 flex flex-wrap items-center justify-center gap-3.5 [animation-delay:300ms]">
                 <a
                     href={url("/")}
-                    class="inline-flex items-center justify-center gap-2 h-11 rounded-full px-6 text-sm font-medium bg-[var(--primary)] text-white dark:text-black/80 hover:opacity-90 active:scale-95 transition shadow-sm"
+                    class="inline-flex items-center justify-center gap-2 h-11 rounded-full px-6 text-sm font-semibold bg-[var(--primary)] text-white hover:brightness-110 active:scale-95 transition-all shadow-md cursor-pointer"
                 >
                     <Icon name="material-symbols:home-outline-rounded" class="text-lg" />
                     Back to home
@@ -69,7 +69,7 @@ import { url } from "@/utils/url-utils";
                 <button
                     id="nf-back-btn"
                     type="button"
-                    class="inline-flex items-center justify-center gap-2 h-11 rounded-full px-5 text-sm font-medium border border-black/10 dark:border-white/15 bg-white/70 dark:bg-neutral-800/80 hover:bg-neutral-100 dark:hover:bg-neutral-700 active:scale-95 transition cursor-pointer"
+                    class="inline-flex items-center justify-center gap-2 h-11 rounded-full px-5 text-sm font-semibold border border-[var(--nf-border)] bg-[var(--nf-card)] text-[var(--nf-fg)] hover:bg-black/5 dark:hover:bg-white/10 active:scale-95 transition-all shadow-sm cursor-pointer"
                 >
                     <Icon name="material-symbols:arrow-back-rounded" class="text-lg" />
                     Go back
@@ -77,19 +77,39 @@ import { url } from "@/utils/url-utils";
             </div>
 
             <!-- Interaction hint -->
-            <p class="nf-rise mt-6 flex items-center gap-2 rounded-full bg-white/60 dark:bg-black/40 backdrop-blur-md px-3 py-1 font-mono text-[10px] tracking-[0.18em] text-neutral-500 dark:text-neutral-400 uppercase [animation-delay:380ms]">
-                <span class="size-1 animate-pulse rounded-full bg-current"></span>
-                Move your cursor to pull the nodes · Click empty space to send a shockwave
+            <p class="nf-rise mt-7 flex items-center gap-2 rounded-full border border-[var(--nf-border)] bg-[var(--nf-card)] backdrop-blur-md px-3.5 py-1.5 font-mono text-[10px] tracking-[0.16em] text-[var(--nf-muted)] uppercase shadow-xs [animation-delay:380ms]">
+                <span class="size-1.5 animate-pulse rounded-full bg-[var(--primary)]"></span>
+                Move cursor to attract nodes · Click empty space to trigger shockwave
             </p>
         </div>
 
-        <p class="pointer-events-none absolute bottom-5 left-1/2 z-10 -translate-x-1/2 font-mono text-[10px] tracking-[0.4em] text-neutral-400/50 dark:text-neutral-500/50 uppercase">
+        <p class="pointer-events-none absolute bottom-5 left-1/2 z-10 -translate-x-1/2 font-mono text-[10px] tracking-[0.4em] text-[var(--nf-muted)] opacity-40 uppercase">
             dsqrwym · node field
         </p>
     </main>
 </Layout>
 
-<style>
+<style is:global>
+:root {
+  --nf-bg: #f8fafc;
+  --nf-fg: #0f172a;
+  --nf-muted: #64748b;
+  --nf-card: rgba(255, 255, 255, 0.82);
+  --nf-border: rgba(0, 0, 0, 0.08);
+  --nf-glass-tint: rgba(255, 255, 255, 0.55);
+  --nf-badge-bg: rgba(0, 0, 0, 0.05);
+}
+
+:root.dark {
+  --nf-bg: #09090b;
+  --nf-fg: #f8fafc;
+  --nf-muted: #94a3b8;
+  --nf-card: rgba(18, 18, 22, 0.78);
+  --nf-border: rgba(255, 255, 255, 0.12);
+  --nf-glass-tint: rgba(255, 255, 255, 0.04);
+  --nf-badge-bg: rgba(255, 255, 255, 0.08);
+}
+
 @keyframes nf-rise {
   from {
     opacity: 0;
@@ -103,21 +123,48 @@ import { url } from "@/utils/url-utils";
 
 @keyframes nf-glass-shine {
   0%, 100% {
-    opacity: 0.7;
-    transform: translate3d(-4%, -3%, 0) scale(1);
+    opacity: 0.6;
+    transform: translate3d(-3%, -2%, 0) scale(1);
   }
   50% {
-    opacity: 1;
-    transform: translate3d(4%, 3%, 0) scale(1.08);
+    opacity: 0.95;
+    transform: translate3d(3%, 2%, 0) scale(1.05);
   }
 }
 
+.nf-scene {
+  background-color: var(--nf-bg) !important;
+  color: var(--nf-fg) !important;
+}
+
+#nf-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .nf-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
   background: radial-gradient(
-    ellipse at 50% 45%,
-    transparent 20%,
-    color-mix(in oklch, var(--page-bg) 55%, transparent) 62%,
-    var(--page-bg) 92%
+    ellipse at 50% 50%,
+    transparent 15%,
+    rgba(248, 250, 252, 0.55) 65%,
+    var(--nf-bg) 95%
+  );
+}
+
+:root.dark .nf-vignette {
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 15%,
+    rgba(9, 9, 11, 0.45) 65%,
+    var(--nf-bg) 95%
   );
 }
 
@@ -125,31 +172,38 @@ import { url } from "@/utils/url-utils";
   color: transparent;
   background-image: linear-gradient(
     180deg,
-    currentColor 0%,
-    color-mix(in oklch, currentColor 55%, var(--page-bg)) 100%
+    var(--nf-fg) 0%,
+    rgba(15, 23, 42, 0.25) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-stroke: 1px color-mix(in oklch, currentColor 24%, transparent);
+  -webkit-text-stroke: 1.5px rgba(15, 23, 42, 0.18);
 }
 
-:global(.dark) .nf-404 {
-  -webkit-text-stroke-color: color-mix(in oklch, currentColor 32%, transparent);
-}
-
-@media (min-width: 640px) {
-  .nf-404 {
-    -webkit-text-stroke-width: 1.5px;
-  }
+:root.dark .nf-404 {
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
 }
 
 .nf-glass {
+  border-radius: 2.75rem;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.42),
-    inset 0 -1px 0 rgb(0 0 0 / 0.16),
-    inset 0 0 32px rgb(255 255 255 / 0.04),
-    0 14px 30px -18px rgb(0 0 0 / 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 20px 40px -15px rgba(0, 0, 0, 0.18);
   overflow: hidden;
+  border: 1px solid var(--nf-border);
+}
+
+:root.dark .nf-glass {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 20px 40px -15px rgba(0, 0, 0, 0.6);
 }
 
 .nf-glass-tint {
@@ -157,13 +211,7 @@ import { url } from "@/utils/url-utils";
   inset: 0;
   z-index: 2;
   border-radius: inherit;
-  background: linear-gradient(
-    145deg,
-    color-mix(in oklch, currentColor 12%, transparent) 0%,
-    color-mix(in oklch, currentColor 5%, transparent) 38%,
-    color-mix(in oklch, currentColor 3%, transparent) 62%,
-    color-mix(in oklch, currentColor 8%, transparent) 100%
-  );
+  background: var(--nf-glass-tint);
   pointer-events: none;
 }
 
@@ -176,24 +224,18 @@ import { url } from "@/utils/url-utils";
 }
 
 .nf-glass-blur-1 {
-  -webkit-backdrop-filter: blur(2.5px);
-  backdrop-filter: blur(2.5px);
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, #000 88%, transparent 100%);
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, #000 88%, transparent 100%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .nf-glass-blur-2 {
-  -webkit-backdrop-filter: blur(4.5px);
-  backdrop-filter: blur(4.5px);
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, #000 78%, transparent 100%);
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, #000 78%, transparent 100%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .nf-glass-blur-3 {
-  -webkit-backdrop-filter: blur(6.5px);
-  backdrop-filter: blur(6.5px);
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, #000 68%, transparent 100%);
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, #000 68%, transparent 100%);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 
 .nf-glass::before {
@@ -203,26 +245,14 @@ import { url } from "@/utils/url-utils";
   z-index: 3;
   border-radius: inherit;
   background:
-    linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.1) 45%, transparent 58%),
-    radial-gradient(80% 60% at 18% -10%, rgb(255 255 255 / 0.28), transparent 65%),
-    radial-gradient(60% 50% at 88% 110%, rgb(255 255 255 / 0.08), transparent 70%);
+    linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.12) 45%, transparent 58%),
+    radial-gradient(80% 60% at 18% -10%, rgba(255, 255, 255, 0.25), transparent 65%);
   animation: nf-glass-shine 9s ease-in-out infinite;
   pointer-events: none;
 }
 
-.nf-glass::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  border-radius: inherit;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-  opacity: 0.04;
-  pointer-events: none;
-}
-
 .nf-rise {
-  animation: nf-rise 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: nf-rise 850ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 </style>
 
@@ -279,9 +309,9 @@ function init404Page() {
     let running = false;
     let lastTimestamp = 0;
 
-    let lineColor = "rgba(0,0,0,0.12)";
-    let nodeColor = "rgba(0,0,0,0.35)";
-    let accentColor = "#111827";
+    let lineColor = "rgba(15, 23, 42, 0.15)";
+    let nodeColor = "rgba(15, 23, 42, 0.45)";
+    let accentColor = "#0f172a";
     let nodeSprite = null;
     let accentSprite = null;
 
@@ -303,9 +333,9 @@ function init404Page() {
 
     function resolveColors() {
         const isDark = document.documentElement.classList.contains("dark");
-        lineColor = isDark ? "rgba(255, 255, 255, 0.16)" : "rgba(0, 0, 0, 0.12)";
-        nodeColor = isDark ? "rgba(255, 255, 255, 0.45)" : "rgba(0, 0, 0, 0.35)";
-        accentColor = isDark ? "#ffffff" : "#111827";
+        lineColor = isDark ? "rgba(255, 255, 255, 0.20)" : "rgba(15, 23, 42, 0.15)";
+        nodeColor = isDark ? "rgba(255, 255, 255, 0.65)" : "rgba(15, 23, 42, 0.50)";
+        accentColor = isDark ? "#ffffff" : "#0f172a";
         nodeSprite = buildSprite(nodeColor);
         accentSprite = buildSprite(accentColor);
     }
@@ -323,7 +353,7 @@ function init404Page() {
                 y: Math.random() * height,
                 vx: Math.cos(angle) * speed,
                 vy: Math.sin(angle) * speed,
-                radius: 1.2 + Math.random() * 1.6,
+                radius: 1.3 + Math.random() * 1.7,
                 phase: Math.random() * Math.PI * 2,
             };
         });
@@ -430,7 +460,7 @@ function init404Page() {
         const linkDistance = Math.min(150, Math.max(96, width * 0.075));
 
         if (pointer.active && accentSprite) {
-            context.globalAlpha = 0.1;
+            context.globalAlpha = 0.12;
             context.drawImage(accentSprite, pointer.x - 90, pointer.y - 90, 180, 180);
         }
 
@@ -444,7 +474,7 @@ function init404Page() {
                 const dist = Math.hypot(dx, dy);
                 if (dist > linkDistance) continue;
 
-                context.globalAlpha = (1 - dist / linkDistance) * 0.18;
+                context.globalAlpha = (1 - dist / linkDistance) * 0.22;
                 context.strokeStyle = lineColor;
                 context.beginPath();
                 context.moveTo(a.x, a.y);
@@ -459,7 +489,7 @@ function init404Page() {
                 const dist = Math.hypot(node.x - pointer.x, node.y - pointer.y);
                 if (dist > influence * 0.9) continue;
 
-                context.globalAlpha = (1 - dist / (influence * 0.9)) * 0.4;
+                context.globalAlpha = (1 - dist / (influence * 0.9)) * 0.45;
                 context.strokeStyle = accentColor;
                 context.beginPath();
                 context.moveTo(node.x, node.y);
@@ -474,7 +504,7 @@ function init404Page() {
             const sprite = influenced ? accentSprite : nodeSprite;
             const size = node.radius * (influenced ? 10 : 7);
 
-            context.globalAlpha = influenced ? 0.95 : 0.7;
+            context.globalAlpha = influenced ? 0.95 : 0.75;
             if (sprite) {
                 context.drawImage(sprite, node.x - size / 2, node.y - size / 2, size, size);
             } else {
@@ -488,9 +518,9 @@ function init404Page() {
         for (let i = 0; i < shockwaves.length; i++) {
             const wave = shockwaves[i];
             const eased = 1 - Math.pow(1 - wave.age, 3);
-            context.globalAlpha = (1 - wave.age) * 0.7;
+            context.globalAlpha = (1 - wave.age) * 0.75;
             context.strokeStyle = accentColor;
-            context.lineWidth = 2;
+            context.lineWidth = 2.5;
             context.beginPath();
             context.arc(wave.x, wave.y, eased * 320, 0, Math.PI * 2);
             context.stroke();
@@ -501,9 +531,9 @@ function init404Page() {
             context.save();
             context.translate(pointer.x, pointer.y);
             context.rotate(timestamp * 0.0004);
-            context.globalAlpha = 0.8;
+            context.globalAlpha = 0.85;
             context.strokeStyle = accentColor;
-            context.lineWidth = 1;
+            context.lineWidth = 1.5;
 
             for (const start of [0, Math.PI]) {
                 context.beginPath();
@@ -513,7 +543,7 @@ function init404Page() {
             context.restore();
 
             if (accentSprite) {
-                context.globalAlpha = 0.9;
+                context.globalAlpha = 0.95;
                 context.drawImage(accentSprite, pointer.x - 10, pointer.y - 10, 20, 20);
             }
         }
